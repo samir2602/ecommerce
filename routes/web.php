@@ -16,6 +16,10 @@ Route::get('/products/{product}', [ProductController::class, 'show'])->name('pro
 
 // Cart routes
 Route::middleware('auth')->group(function(){
+    Route::get('/dashboard', function() {
+        return redirect('/products');
+    })->name('dashboard');
+    
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
     Route::post('/cart/{product}', [CartController::class, 'add'])->name('cart.add');
     Route::patch('/cart/{product}', [CartController::class, 'update'])->name('cart.update');

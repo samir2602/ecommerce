@@ -19,7 +19,7 @@ class ProductController extends Controller
         $products = Product::with('category')
                 ->where('is_active', true)
                 ->when($search, function($query) use ($search) {
-                    $query->where('search', 'like', '%'.$search.'%');
+                    $query->where('name', 'like', '%'.$search.'%');
                 })
                 ->when($category, function($query) use ($category) {
                     $query->where('category_id', $category);
