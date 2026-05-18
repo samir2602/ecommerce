@@ -34,21 +34,21 @@ Route::middleware('auth')->group(function(){
 
 // Admin Route
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function(){
-    Route::get('/', [AdminProductController::class, 'index'])->name('admin.dashborad');
+    Route::get('/', [AdminProductController::class, 'dashboard'])->name('admin.dashboard');
 
     // Admin Products
-    Route::get('/products', [AdminProductController::class, 'index'])->name('admin.product.index');
+    Route::get('/products', [AdminProductController::class, 'products'])->name('admin.products.index');
     Route::get('/products/create', [AdminProductController::class, 'create'])->name('admin.product.create');
-    Route::post('/products', [AdminProductController::class, 'store'])->name('admin.product.store');
-    Route::get('/products/{product}/edit', [AdminProductController::class, 'index'])->name('admin.product.edit');
+    Route::post('/products', [AdminProductController::class, 'store'])->name('admin.product.store');    
+    Route::get('/products/{product}/edit', [AdminProductController::class, 'edit'])->name('admin.product.edit');
     Route::put('/products/{product}', [AdminProductController::class, 'update'])->name('admin.product.update');
     Route::delete('/products/{product}', [AdminProductController::class, 'destroy'])->name('admin.product.destroy');
 
     // Admin Categories
     Route::get('/categories', [AdminCategoryController::class, 'index'])->name('admin.categories.index');
     Route::get('/categories/create', [AdminCategoryController::class, 'create'])->name('admin.categories.create');
-    Route::post('/categories', [AdminCategoryController::class, 'store'])->name('admin.categories.store');
-    Route::get('/categories/{category}/edit', [AdminCategoryController::class, 'index'])->name('admin.categories.edit');
+    Route::post('/categories', [AdminCategoryController::class, 'store'])->name('admin.categories.store');    
+    Route::get('/categories/{category}/edit', [AdminCategoryController::class, 'edit'])->name('admin.categories.edit');
     Route::put('/categories/{category}', [AdminCategoryController::class, 'update'])->name('admin.categories.update');
     Route::delete('/categories/{category}', [AdminCategoryController::class, 'destroy'])->name('admin.categories.destroy');
 
