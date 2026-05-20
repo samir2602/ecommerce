@@ -59,8 +59,12 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function(){
 });
 
 Route::get('/make-admin', function() {
-    \App\Models\User::where('email', 'samir@email.com')->update(['is_admin' => 1]);
-    return 'Done - you are now admin!';
+    $user = \App\Models\User::where('email', 'samir@email.com')->first();
+    if($user) {
+        $user->update(['is_admin' => 1]);
+        return 'Done! User found and updated: ' . $user->email;
+    }
+    return 'User not found!';
 });
 
 // Route::get('/', function () {
