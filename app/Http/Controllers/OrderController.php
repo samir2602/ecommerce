@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Product;
+use App\Mail\OrderConfirmation;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -64,6 +66,7 @@ class OrderController extends Controller
             Product::where('id', $item['id'])->decrement('stock', $item['quantity']);
         }
 
+        Mail::to($order->email)->send(new OrderConfirmation($order));
         session()->forget('cart');
 
         return redirect('/orders/'. $order->id)->with('success', 'Order placed successfully!');
