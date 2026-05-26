@@ -2,9 +2,6 @@
 
 A full-featured e-commerce application built with Laravel. Users can browse products, add to cart, place orders and track their order history. Includes a complete admin panel for managing products, categories and orders.
 
-## 🌐 Live Demo
-[View Live](your-railway-url-here)
-
 ## ✨ Features
 
 ### Customer
