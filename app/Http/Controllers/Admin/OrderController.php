@@ -9,7 +9,7 @@ use App\Models\Order;
 class OrderController extends Controller
 {
     public function index(){
-        $orders = Order::with('user')->latest()->get();
+        $orders = Order::with('user')->latest()->paginate(10);
         return view('admin.orders.index', ['orders' => $orders]);
     }
 
